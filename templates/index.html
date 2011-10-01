@@ -31,20 +31,22 @@
 <div id="summary">
   <h1>It worked!</h1>
   <h2>Congratulations on your first Django-powered page.</h2>
+  <h2>This project was made from a skeleton project, so a few things have been done for you already.</h2>
 </div>
 
 <div id="instructions">
   <p>Of course, you haven't actually done any work yet. Here's what to do next:</p>
   <ul>
     <li>If you plan to use a database, edit the <code>DATABASES</code> setting in <code>django_skel/settings.py</code>.</li>
-    <li>Start your first app by running <code>python django_skel/manage.py startapp [appname]</code>.</li>
   </ul>
+  <p>
+  <ul>
+    <li>The first app has been made for you, the eponymously titled "app".  Your ROOT_URLCONF is most likely set to app/urls.py. The "app" app is intended for project-wide code that isn't intended to be shared and exported for other projects.</li>
 </div>
 
 <div id="explanation">
   <p>
-    You're seeing this message because you have <code>DEBUG = True</code> in your
-    Django settings file and you haven't configured any URLs. Get to work!
+    You can find this file in templates/index.html.  You are seeing this because you have configured a route to that template, presumably in a file called "urls.py".  Check settings.py for a ROOT_URLCONF setting, which should point you to where your URLConf was defined.
   </p>
 </div>
 </body></html>
