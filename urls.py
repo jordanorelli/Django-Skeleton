@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.views.generic import TemplateView
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -6,7 +7,7 @@ from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'proj.views.home', name='home'),
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
     # url(r'^proj/', include('proj.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
