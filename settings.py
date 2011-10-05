@@ -1,1 +1,1 @@
-conf/settings/local.py
+conf/local/settings.py

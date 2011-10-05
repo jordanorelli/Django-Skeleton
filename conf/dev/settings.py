@@ -1,4 +1,4 @@
-from conf.settings.base import *
+from conf.base.settings import *
 DEBUG = True
 TEMPLATE_DEBUG = True
 
