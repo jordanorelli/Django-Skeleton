@@ -18,17 +18,17 @@ There's an additional `manage.py` command in `apps/main/management/commands/new_
 
 I've also included a `fabfile.py`, which is used to create tasks for [Fabric](http://docs.fabfile.org/en/1.2.2/index.html), a library for managing SSH deployment.  I don't generally condone using the `from modulename import *` syntax since it makes it very non-obvious where things are coming from, but it made it possible to dynamically create connection functions at runtime, which are generated based on host configurations.  There's a sample configuration included in `conf/dev/hosts.py` that would show how you would, in theory, add a remote host configuration for a server called `dev`.  If you fill that in with some real host details you'll be able to `fab dev uname` to use the included `uname` task.  All it does it print out some info about the system, but it's enough to illustrate how to create Fabric tasks and test your host configuration.  Unfortunately Fabric does not currently read your settings in `~/.ssh/config`, so you may have to repeat them.
 
-I personally add a little chunk of code to my `.bashrc` to create a `mkdjango` function, which will create a virtual environment of the same name, create a project directory, clone this skeleton into that directory, regenerate the SECRET\_KEY, remove this README, install all of the requirements to the virtualenv via pip, run `syncdb` to create a developmentdatabase, and fire up the application.  Here is my `mkdjango` function:
+I personally add a little chunk of code to my `.bashrc` to create a `mkdjango` function, which will create a virtual environment of the same name, create a project directory, clone this skeleton into that directory, regenerate the SECRET\_KEY, remove this README, install all of the requirements to the virtualenv via pip, run `syncdb` to create a developmentdatabase, and fire up the application, all in one command.  Requires pip, virtualenv, and virtualenvwrapper to work properly.  Here is my `mkdjango` function:
 
     mkdjango () {
+        mkproject --no-site-packages --prompt=$1: $1 &&
+        git init &&
+        git pull git@github.com:jordanorelli/Django-Skeleton.git master &&
+        rm README.markdown &&
+        pip install -r requirements.txt &&
+        ./manage.py new_secret &&
+        ./manage.py syncdb &&
+        ./manage.py runserver
     }
 
-Generally I create a project like this (requires virtualenvwrapper):
-
-    mkproject --no-site-packages --prompt=testskel: testskel &&
-    git init &&
-    git pull git@github.com:jordanorelli/Django-Skeleton.git master &&
-    rm README.markdown &&
-    pip install -r requirements.txt &&
-    ./manage.py syncdb &&
-    ./manage.py runserver
+With that in my `~/.bashrc`, all I have to say is `mkdjango some_project_name` and I'm ready to rock.
