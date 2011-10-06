@@ -23,7 +23,7 @@ I personally add a little chunk of code to my `.bashrc` to create a `mkdjango` f
     mkdjango () {
         mkproject --no-site-packages --prompt=$1: $1 &&
         git init &&
-        git pull git@github.com:jordanorelli/Django-Skeleton.git master &&
+        git pull git://github.com/jordanorelli/Django-Skeleton.git master &&
         rm README.markdown &&
         pip install -r requirements.txt &&
         ./manage.py new_secret &&
