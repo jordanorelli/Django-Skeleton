@@ -13,8 +13,11 @@ MIDDLEWARE_CLASSES += (
 )
 
 INSTALLED_APPS += (
+    'examples',
     'debug_toolbar',
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DATABASES = {
     'default': {
