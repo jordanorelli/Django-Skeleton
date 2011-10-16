@@ -13,7 +13,6 @@ MIDDLEWARE_CLASSES += (
 )
 
 INSTALLED_APPS += (
-    'examples',
     'debug_toolbar',
 )
 
